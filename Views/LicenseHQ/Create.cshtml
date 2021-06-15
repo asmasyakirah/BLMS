@@ -1,0 +1,207 @@
+﻿@model BLMS.v2.Models.License.LicenseHQ
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">HQ USER - LICENSE REQUEST</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="~/LicenseHQ/Index">HQ User</a></li>
+                        <li class="breadcrumb-item active">License Request</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <form asp-action="Create" autocomplete="off">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div asp-validation-summary="ModelOnly" class="text-danger text-sm"></div>
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">License Details</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="LicenseName" class="control-label text-sm" style="color:red">*</label>
+                                        <label asp-for="LicenseName" class="control-label text-sm"></label>
+                                        <input asp-for="LicenseName" class="form-control text-sm" />
+                                        <span asp-validation-for="LicenseName" class="text-danger text-sm"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="CategoryName" class="control-label text-sm" style="color:red">*</label>
+                                        <label asp-for="CategoryName" class="control-label text-sm"></label>
+                                        <select asp-for="CategoryID"
+                                                class="form-control text-sm"
+                                                asp-items="@(new SelectList(@ViewBag.ListofCategory,"CategoryID", "CategoryName"))">
+                                        </select>
+                                        <span asp-validation-for="CategoryName" class="text-danger text-sm"></span>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="DivName" class="control-label text-sm" style="color:red">*</label>
+                                                <label asp-for="DivName" class="control-label text-sm"></label>
+                                                <select asp-for="DivID"
+                                                        class="form-control text-sm"
+                                                        asp-items="@(new SelectList(@ViewBag.ListofBusinessDiv,"DivID", "DivName"))">
+                                                </select>
+                                                <span asp-validation-for="DivName" class="text-danger text-sm"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="UnitName" class="control-label text-sm" style="color:red">*</label>
+                                                <label asp-for="UnitName" class="control-label text-sm"></label>
+                                                <select asp-for="UnitID"
+                                                        class="form-control text-sm"
+                                                        asp-items="@(new SelectList(@ViewBag.ListofBusinessUnit,"UnitID", "UnitName"))">
+                                                </select>
+                                                <span asp-validation-for="UnitName" class="text-danger text-sm"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="IssuedDT" class="control-label text-sm"></label>
+                                                    <input id="IssuedDT" asp-for="IssuedDT" name="IssuedDT" class="form-control text-sm" readonly="readonly" />
+                                                    <span asp-validation-for="IssuedDT" class="text-danger text-sm"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ExpiredDT" class="control-label text-sm"></label>
+                                                    <input id="ExpiredDT" asp-for="ExpiredDT" name="ExpiredDT" class="form-control text-sm" readonly="readonly" />
+                                                    <span asp-validation-for="ExpiredDT" class="text-danger text-sm"></span>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">Person-in-Charge (PIC)</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            @*later*@
+                                            <div class="form-group">
+                                                <label class="control-label text-sm" style="color:red">*</label>
+                                                <label class="control-label text-sm">PIC 1 Name</label>
+                                                <input class="form-control text-sm" readonly="readonly" />
+                                                <span class="text-danger text-sm"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label asp-for="PIC2Name" class="control-label text-sm"></label>
+                                                <select asp-for="PIC2StaffNo"
+                                                        class="form-control text-sm"
+                                                        asp-items="@(new SelectList(@ViewBag.ListofPIC2,"PIC2StaffNo", "PIC2Name"))">
+                                                </select>
+                                                <span asp-validation-for="PIC2Name" class="text-danger text-sm"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label asp-for="PIC3Name" class="control-label text-sm"></label>
+                                                <select asp-for="PIC3StaffNo"
+                                                        class="form-control text-sm"
+                                                        asp-items="@(new SelectList(@ViewBag.ListofPIC3,"PIC3StaffNo", "PIC3Name"))">
+                                                </select>
+                                                <span asp-validation-for="PIC3Name" class="text-danger text-sm"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">Remarks</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label asp-for="Remarks" class="control-label text-sm"></label>
+                                        <textarea asp-for="Remarks" class="form-control text-sm"></textarea>
+                                        <span asp-validation-for="Remarks" class="text-danger text-sm"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Request" class="btn btn-primary btn-sm text-white" />
+                    <a asp-action="Index" class="btn btn-success btn-sm text-white"> Back</a>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    @*<script type="text/javascript">
+        $(function () {
+            $('#IssuedDT').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "dd/mm/yyyy",
+                language: "tr"
+            });
+        });
+
+        $(function () {
+            $('#ExpiredDT').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: "dd/mm/yyyy",
+                language: "tr"
+            });
+        });
+    </script>*@
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

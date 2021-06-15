@@ -1,0 +1,88 @@
+﻿@model IEnumerable<BLMS.v2.Models.Admin.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">TYPE OF LICENSE</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active">Type of License</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+                <table id="category" class="table table-bordered">
+                    <thead class="text-center table-active">
+                        <tr>
+                            <th class="text-sm" width="40%">
+                                @Html.DisplayNameFor(model => model.CategoryName)
+                            </th>
+                            <th class="text-sm" width="45%">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th class="text-sm" width="15%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.CategoryName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }, new { @class = "btn btn-primary btn-sm" })
+                                    @*@Html.ActionLink("Details", "Details", new { id=item.CategoryID }) |*@
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are sure wants to delete this Business Division?');" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Create" class="btn btn-success btn-block btn-sm text-white">Create Type of License / Category</a>
+            </div>
+        </div>
+
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+            </script>
+        }
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#category').DataTable();
+            responsive: true
+        });
+    </script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

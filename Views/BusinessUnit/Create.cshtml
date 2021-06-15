@@ -1,0 +1,80 @@
+﻿@model BLMS.v2.Models.Admin.BusinessUnit
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">BUSINESS UNIT - CREATE</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="~/BusinessUnit/Index">Business Unit</a></li>
+                        <li class="breadcrumb-item active">Create</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <form asp-action="Create" autocomplete="off">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div asp-validation-summary="ModelOnly" class="text-danger text-sm"></div>
+                            <div class="form-group">
+                                <label asp-for="DivName" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="DivName" class="control-label text-sm"></label>
+                                <select asp-for="DivID"
+                                        class="form-control text-sm"
+                                        asp-items="@(new SelectList(@ViewBag.ListofBusinessDiv,"DivID", "DivName"))">
+                                </select>
+                                <span asp-validation-for="DivName" class="text-danger text-sm"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UnitName" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="UnitName" class="control-label text-sm"></label>
+                                <input asp-for="UnitName" class="form-control text-sm" onkeyup="this.value=this.value.toUpperCase()" />
+                                <span asp-validation-for="UnitName" class="text-danger text-sm"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="HoCName" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="HoCName" class="control-label text-sm"></label>
+                                <input asp-for="HoCName" class="form-control text-sm" onkeyup="this.value=this.value.toUpperCase()" />
+                                <span asp-validation-for="HoCName" class="text-danger text-sm"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Create" class="btn btn-primary btn-sm text-white" />
+                    <a asp-action="Index" class="btn btn-success btn-sm text-white"> Back</a>
+                </div>
+            </div>
+
+            @if (ViewBag.Message != null)
+            {
+                <script type="text/javascript">
+                window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                </script>
+            }
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

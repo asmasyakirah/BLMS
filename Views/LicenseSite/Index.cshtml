@@ -1,0 +1,128 @@
+﻿@model IEnumerable<BLMS.v2.Models.License.LicenseSite>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">SITE USER - LICENSE LISTING</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active">License Listing</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered table-responsive-sm">
+                    <thead class="text-center table-active">
+                        <tr>
+                            <th class="text-sm align-text-top col-md-2">
+                                @Html.DisplayNameFor(model => model.UnitName)
+                            </th>
+                            <th class="text-sm align-text-top col-md-3">
+                                @Html.DisplayNameFor(model => model.LicenseName)
+                            </th>
+                            <th class="text-sm align-text-top col-md-1">License File</th>
+                            <th class="text-sm align-text-top col-md-2">
+                                @Html.DisplayNameFor(model => model.CategoryName)
+                            </th>
+                            <th class="text-sm align-text-top col-md-1">Issued Date</th>
+                            <th class="text-sm align-text-top col-md-1">Expired Date</th>
+                            <th class="text-sm align-text-top col-md-2">PIC</th>
+                            <th class="text-sm align-text-top col-md-1">Status</th>
+                            <th class="text-sm align-text-top col-md-1">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.UnitName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.LicenseName)
+                                </td>
+                                <td>
+                                    @if (item.RenewReminderDT.ToString() != "9999 - 12 - 31 00:00:00.000")
+                                    {
+                                        <a type="button" asp-controller="LicenseSite" asp-action="DownloadLicenseFile" asp-route-id="@item.LicenseID"><i class="fa fa-file fa-sm"></i></a>
+                                    }
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.CategoryName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.IssuedDT)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.ExpiredDT)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.PIC2Name)
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.PIC3Name)
+                                </td>
+                                <td>
+                                    @if (item.isRegistered == true)
+                                    {
+                                        <button name="button" class="mb-1 btn btn-success btn-sm text-sm btn-block" disabled>
+                                            Registered
+                                        </button>
+                                    }
+                                    else if (item.isRenewed == true)
+                                    {
+                                        <button name="button" class="mb-1 btn btn-info btn-sm text-sm btn-block" disabled>
+                                            Renewed
+                                        </button>
+                                    }
+
+                                    @if ((item.RenewReminderDT.Date - DateTime.Now.Date).Days > 0 | item.RenewReminderDT.ToString() == "9999-12-31 00:00:00.000")
+                                    {
+                                        <button name="button" class="btn btn-success btn-sm text-sm btn-block" disabled>
+                                            Active
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button name="button" class="btn btn-secondary btn-sm text-sm btn-block" disabled>
+                                            Not active
+                                        </button>
+                                    }
+                                </td>
+                                <td>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.CategoryName }, new { @class = "btn btn-primary btn-sm" })*@
+                                    @Html.ActionLink("Details", "Details", new { id = item.LicenseID }, new { @class = "mb-1 btn btn-secondary btn-sm btn-block" })
+
+                                    @if ((item.RenewReminderDT.Date - DateTime.Now.Date).Days < 30 && item.RenewReminderDT.ToString() != "9999-12-31 00:00:00.000")
+                                    {
+                                        @Html.ActionLink("Renewal", "Renewal", new { id = item.LicenseID }, new { @class = "btn btn-primary btn-sm btn-block" })
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Register" class="btn btn-success btn-block btn-sm text-white">Register New License</a>
+            </div>
+        </div>
+    </section>
+</div>

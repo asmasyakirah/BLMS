@@ -1,0 +1,94 @@
+﻿@model IEnumerable<BLMS.v2.Models.Admin.BusinessUnit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">BUSINESS UNIT</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active">Business Unit</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+                <table id="unit" class="table table-bordered">
+                    <thead class="text-center table-active">
+                        <tr>
+                            <th width="30%" class="text-sm">
+                                @Html.DisplayNameFor(model => model.DivName)
+                            </th>
+                            <th width="30%" class="text-sm">
+                                @Html.DisplayNameFor(model => model.UnitName)
+                            </th>
+                            <th width="25%" class="text-sm">
+                                @Html.DisplayNameFor(model => model.HoCName)
+                            </th>
+                            <th width="15%" class="text-sm">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th class="text-sm font-weight-normal">
+                                    @Html.DisplayFor(modelItem => item.DivName)
+                                </th>
+                                <th class="text-sm font-weight-normal">
+                                    @Html.DisplayFor(modelItem => item.UnitName)
+                                </th>
+                                <th class="text-sm font-weight-normal">
+                                    @Html.DisplayFor(modelItem => item.HoCName)
+                                </th>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.UnitID }, new { @class = "btn btn-primary btn-sm" })
+                                    @*@Html.ActionLink("Details", "Details", new { id=item.UnitID }) |*@
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.UnitID }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are sure wants to delete this Business Unit?');" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Create" class="btn btn-success btn-block btn-sm text-white">Create Business Unit</a>
+            </div>
+        </div>
+
+        @if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+            </script>
+        }
+    </section>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#unit').DataTable();
+            responsive: true
+        });
+    </script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

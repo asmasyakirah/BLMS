@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLMS - Business License Management System</title>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link href="~/theme/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/theme/dist/css/blms.min.css">
+    <link href="~/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <!-- Full screen -->
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Web Logo -->
+            <a href="~/Home/Index" class="brand-link">
+                <img src="~/theme/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">BLMS</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <br />
+
+                <!-- Sidebar Search -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Dashboard -->
+                        <li class="nav-header">DASHBOARD</li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Dashboard
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dashboard v1</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Dashboard v2</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-header">LICENSING</li>
+                        <!-- Site User -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Site User
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="~/LicenseSite/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>License Listing</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/LicenseSite/Register" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>License Registration</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- HQ User -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    HQ User
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="~/LicenseHQ/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>License Listing</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/LicenseHQ/Create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>License Request</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-header">REPORTING</li>
+
+                        <li class="nav-header">SOP</li>
+
+                        <li class="nav-header">ADMINISTRATION MODULE</li>
+                        <!-- Admin/Registration -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-registered"></i>
+                                <p>
+                                    Registration
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="~/BusinessDiv/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Business Division</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/BusinessUnit/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Business Unit</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/Category/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Type of License</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/PIC/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Person-in-Charge</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>User Role</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="~/AuthorityLink/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Authority Link</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Admin/License -->
+                        <li class="nav-item">
+                            <a href="~/LicenseAdmin/Index" class="nav-link">
+                                <i class="nav-icon far fa-address-card"></i>
+                                <p>
+                                    Application Tracking
+                                </p>
+                            </a>
+                        </li>
+
+                        <!-- Admin/Audit & Error Log -->
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-file nav-icon"></i>
+                                <p>
+                                    Audit & Error Log
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        @RenderBody()
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b class="text-sm">Version</b> 1.0.0
+            </div>
+            <strong class="text-sm">Copyright &copy; 2021 | UEM EDGENTA BERHAD</strong>
+            <span class="text-muted text-sm">All rights reserved.</span>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+        </aside>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="~/theme/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/theme/dist/js/adminlte.min.js"></script>
+    <!-- demo purposes -->
+    <script src="~/theme/dist/js/demo.js"></script>
+    <script src="~/js/bootstrap-datepicker.js"></script>
+
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/notify.min.js" asp-append-version="true"></script>
+
+    <script src="~/js/jquery.dataTables.min.js"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

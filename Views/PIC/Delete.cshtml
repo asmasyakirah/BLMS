@@ -1,0 +1,76 @@
+﻿@model BLMS.v2.Models.Admin.PIC
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">PERSON-IN-CHARGE (PIC) - DELETE</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="~/PIC/Index">PIC</a></li>
+                        <li class="breadcrumb-item active">Delete</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <form asp-action="Delete" autocomplete="off">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group" hidden>
+                                <label asp-for="PICID" class="control-label"></label>
+                                <input asp-for="PICID" class="form-control" />
+                                <span asp-validation-for="PICID" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="PICName" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="PICName" class="control-label text-sm"></label>
+                                <input asp-for="PICName" class="form-control text-sm" disabled />
+                                <span asp-validation-for="PICName" class="text-danger text-sm"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DivName" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="DivName" class="control-label text-sm"></label>
+                                <input asp-for="DivName" class="form-control text-sm" disabled />
+                                <span asp-validation-for="DivName" class="text-danger text-sm"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UnitName" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="UnitName" class="control-label text-sm"></label>
+                                <input asp-for="UnitName" class="form-control text-sm" disabled />
+                                <span asp-validation-for="UnitName" class="text-danger text-sm"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UserType" class="control-label text-sm" style="color:red">*</label>
+                                <label asp-for="UserType" class="control-label text-sm"></label>
+                                <input asp-for="UserType" class="form-control text-sm" disabled />
+                                <span asp-validation-for="UserType" class="text-danger text-sm"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Delete" class="btn btn-danger btn-sm text-white" />
+                    <a asp-action="Index" class="btn btn-success btn-sm text-white"> Back</a>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

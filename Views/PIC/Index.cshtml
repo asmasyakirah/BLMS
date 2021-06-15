@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BLMS.v2.Models.Admin.PIC>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">PERSON-IN-CHARGE (PIC)</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active">PIC</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead class="text-center table-active">
+                        <tr>
+                            <th class="text-sm align-text-top" width="15%">
+                                @Html.DisplayNameFor(model => model.PICName)
+                            </th>
+                            <th class="text-sm align-text-top" width="15%">
+                                @Html.DisplayNameFor(model => model.PICStaffNo)
+                            </th>
+                            <th class="text-sm align-text-top" width="15%">
+                                @Html.DisplayNameFor(model => model.PICEmail)
+                            </th>
+                            <th class="text-sm align-text-top" width="15%">
+                                @Html.DisplayNameFor(model => model.DivName)
+                            </th>
+                            <th class="text-sm align-text-top" width="15%">
+                                @Html.DisplayNameFor(model => model.UnitName)
+                            </th>
+                            <th class="text-sm align-text-top" width="10%">
+                                @Html.DisplayNameFor(model => model.UserType)
+                            </th>
+                            <th class="text-sm align-text-top" width="15%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.PICName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.PICStaffNo)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.PICEmail)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.DivName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.UnitName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.UserType)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.PICID }, new { @class = "btn btn-primary btn-sm" })
+                                    @*@Html.ActionLink("Details", "Details", new { id=item.PICID }) |*@
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.PICID }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Create" class="btn btn-success btn-block btn-sm text-white">Create Person-in-Charge (PIC)</a>
+            </div>
+        </div>
+    </section>
+</div>
