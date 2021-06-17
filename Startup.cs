@@ -1,4 +1,5 @@
 using BLMS.v2.Context;
+using BLMS.v2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,9 @@ namespace BLMS.v2
 
             //services.AddDbContext<BLMSDbContext>(options =>
             //options.UseSqlServer(Configuration.GetConnectionString("DevServerConnection")));
+
+            services.AddDbContext<BLMSContext>(options => 
+            options.UseSqlServer(Configuration.GetConnectionString("DevServerConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
