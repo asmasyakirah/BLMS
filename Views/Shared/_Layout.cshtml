@@ -198,12 +198,22 @@
 
                         <!-- Admin/License -->
                         <li class="nav-item">
-                            <a href="~/LicenseAdmin/Index" class="nav-link">
+                            @*<a href="~/LicenseAdmin/Index" class="nav-link">*@
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-address-card"></i>
                                 <p>
                                     Application Tracking
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="~/CompetentPersonnel/Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Competent Personnel</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <!-- Admin/Audit & Error Log -->
