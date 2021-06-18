@@ -269,6 +269,21 @@
             $('#tableCP').DataTable();
         })
 
+        function copyCertFileName(certFileName)
+        {
+            /* Copy the text inside the text field */
+            var tempInput = document.createElement("input");
+            tempInput.value = certFileName;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            //alert("Copied the text: " + tempInput.value);
+
+            document.body.removeChild(tempInput);
+        }
+
     </script>
 
     @RenderSection("Scripts", required: false)

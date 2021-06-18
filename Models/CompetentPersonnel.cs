@@ -13,11 +13,17 @@ namespace BLMS.v2.Models
     {
         [Required]
         [StringLength(150)]
+        [Display(Name = "Business Division")]
+        public string BusinessDiv { get; set; }
+
+        [Required]
+        [StringLength(150)]
         [Display(Name = "Business Unit")]
         public string BusinessUnit { get; set; }
 
         [Key]
         [Column("PersonnelID")]
+        [Display(Name = "Personnel ID")]
         public int PersonnelId { get; set; }
 
         [Required]
@@ -33,6 +39,7 @@ namespace BLMS.v2.Models
 
         [Column("ICNo")]
         [StringLength(15)]
+        [Display(Name = "IC No")]
         public string Icno { get; set; }
 
         [Required]
@@ -49,11 +56,12 @@ namespace BLMS.v2.Models
         public string CertNo { get; set; }
 
         [Column("ExpiredDT")]
-        [Display(Name = "Expired Date")]
+        [Display(Name = "Expiry Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? ExpiredDt { get; set; }
 
+        [Display(Name = "Year Awarded")]
         public int? YearAwarded { get; set; }
 
         [StringLength(200)]
@@ -61,12 +69,15 @@ namespace BLMS.v2.Models
         public string CertFileName { get; set; }
 
         [StringLength(200)]
+        [Display(Name = "Registration No")]
         public string RegNo { get; set; }
 
         [StringLength(200)]
         public string Branch { get; set; }
 
         [Column("CreatedDT")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm tt}")]
         public DateTime CreatedDt { get; set; }
 
         [Column("CreatedBY")]
@@ -74,13 +85,12 @@ namespace BLMS.v2.Models
         public string CreatedBy { get; set; }
 
         [Column("UpdatedDT")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy hh:mm tt}")]
         public DateTime UpdatedDt { get; set; }
 
         [Column("UpdatedBY")]
         [StringLength(50)]
         public string UpdatedBy { get; set; }
-        [Required]
-        [StringLength(150)]
-        public string BusinessDiv { get; set; }
     }
 }
