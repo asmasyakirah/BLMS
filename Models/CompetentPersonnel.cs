@@ -27,6 +27,8 @@ namespace BLMS.v2.Models
 
         [Column("AppointedDT")]
         [Display(Name = "Appointment Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? AppointedDt { get; set; }
 
         [Column("ICNo")]
@@ -48,6 +50,8 @@ namespace BLMS.v2.Models
 
         [Column("ExpiredDT")]
         [Display(Name = "Expired Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? ExpiredDt { get; set; }
 
         public int? YearAwarded { get; set; }

@@ -30,45 +30,52 @@
         <div class="card">
             <div class="card-body">
 
-                <table class="table table-bordered table-responsive-sm">
+                <table id="tableCP" class="table table-bordered table-responsive-sm" style="display: block; overflow-x: auto; white-space: nowrap;">
                     <thead class="text-center table-active">
                         <tr>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
+                                No
+                            </th>
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.BusinessUnit)
                             </th>
-                            <th class="text-sm align-text-top col-md-2">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.PersonnelName)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.AppointedDt)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.CertFrom)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.CertType)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.CertNo)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.ExpiredDt)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.YearAwarded)
                             </th>
-                            <th class="text-sm align-text-top col-md-1">
+                            <th class="text-sm align-text-top">
                                 @Html.DisplayNameFor(model => model.CertFileName)
                             </th>
-                            <th class="text-sm align-text-top col-md-2">
+                            <th class="text-sm align-text-top">
                                 Action
                             </th>
                         </tr>
                     </thead>
                     <tbody class="text-center">
+                        @{ int i = 1; }
                         @foreach (var item in Model)
                         {
                         <tr>
+                            <td class="text-sm">
+                                @i
+                            </td>
                             <td class="text-sm">
                                 @Html.DisplayFor(modelItem => item.BusinessUnit)
                             </td>
@@ -94,89 +101,25 @@
                                 @Html.DisplayFor(modelItem => item.YearAwarded)
                             </td>
                             <td>
-                                <a href="@Html.DisplayFor(modelItem => item.CertFileName)" target="_blank"><i class="fa fa-file fa-sm"></i></a>
-                            </td>
-                            <td>
-                                @*<a asp-action="Edit" asp-route-id="@item.PersonnelId">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.PersonnelId">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.PersonnelId">Delete</a>*@
-                                @Html.ActionLink("Details", "Details", new { id = item.PersonnelId }, new { @class = "btn btn-secondary btn-sm" })
-                            </td>
-                        </tr>
-
-
-                            @*<tr>
-                                <td class="text-sm">
-                                    @Html.DisplayFor(modelItem => item.UnitName)
-                                </td>
-                                <td class="text-sm">
-                                    @Html.DisplayFor(modelItem => item.LicenseName)
-                                </td>
-                                <td>
-                                    @if (item.RenewReminderDT.ToString() != "9999-12-31 00:00:00.000")
+                                @{
+                                    if (item.CertFileName == null)
                                     {
-                                        <a type="button" asp-controller="LicenseHQ" asp-action="DownloadLicenseFile" asp-route-id="@item.LicenseID"><i class="fa fa-file fa-sm"></i></a>
-                                    }
-                                </td>
-                                <td class="text-sm">
-                                    @Html.DisplayFor(modelItem => item.CategoryName)
-                                </td>
-                                <td class="text-sm">
-                                    @Html.DisplayFor(modelItem => item.IssuedDT)
-                                </td>
-                                <td class="text-sm">
-                                    @Html.DisplayFor(modelItem => item.ExpiredDT)
-                                </td>
-                                <td class="text-sm">
-                                    @Html.DisplayFor(modelItem => item.PIC1Name)
-                                    <br />
-                                    @Html.DisplayFor(modelItem => item.PIC2Name)
-                                    <br />
-                                    @Html.DisplayFor(modelItem => item.PIC3Name)
-                                </td>
-                                <td>
-                                    @if (item.isRequested == true)
-                                    {
-                                        <button name="button" class="btn btn-primary btn-sm" disabled>
-                                            Requested
-                                        </button>
-                                    }
-                                    else if (item.isApproved == true)
-                                    {
-                                        <button name="button" class="btn btn-warning btn-sm" disabled>
-                                            Approved
-                                        </button>
-                                    }
-                                    else if (item.isRegistered == true)
-                                    {
-                                        <button name="button" class="mb-1 btn btn-success btn-sm text-sm btn-block" disabled>
-                                            Registered
-                                        </button>
-                                    }
-                                    else if (item.isRenewed == true)
-                                    {
-                                        <button name="button" class="mb-1 btn btn-info btn-sm text-sm btn-block" disabled>
-                                            Renewed
-                                        </button>
-                                    }
-
-                                    @if ((item.RenewReminderDT.Date - DateTime.Now.Date).Days > 0 | item.RenewReminderDT.ToString() == "9999-12-31 00:00:00.000")
-                                    {
-                                        <button name="button" class="btn btn-success btn-sm text-sm btn-block" disabled>
-                                            Active
-                                        </button>
+                                        <i class="text-sm font-italic">Not available</i>
                                     }
                                     else
                                     {
-                                        <button name="button" class="btn btn-secondary btn-sm text-sm btn-block" disabled>
-                                            Not active
-                                        </button>
+                                        <a href="@Html.DisplayFor(modelItem => item.CertFileName)" target="_blank"><i class="fa fa-file fa-sm"></i></a>
                                     }
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Details", "Details", new { id = item.LicenseID }, new { @class = "btn btn-secondary btn-sm" })
-                                </td>
-                            </tr>*@
+                                }
+                            </td>
+                            <td>
+                                @*<a asp-action="Edit" asp-route-id="@item.PersonnelId">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.PersonnelId">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.PersonnelId">Delete</a>*@
+                                @Html.ActionLink("Details", "Details", new { id = item.PersonnelId }, new { @class = "btn btn-secondary btn-sm" })
+                            </td>
+                        </tr>
+                        i++;
                         }
                     </tbody>
                 </table>
