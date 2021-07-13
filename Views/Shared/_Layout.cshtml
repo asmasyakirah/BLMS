@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="~/theme/dist/css/blms.min.css">
     <link href="~/css/bootstrap-datepicker.css" rel="stylesheet" />
     <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <!-- SweetAlert2 -->
+    <link href="~/theme/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css"  rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -255,6 +257,8 @@
     <!-- demo purposes -->
     <script src="~/theme/dist/js/demo.js"></script>
     <script src="~/js/bootstrap-datepicker.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="~/theme/plugins/sweetalert2/sweetalert2.min.js"></script>
 
 
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -269,8 +273,28 @@
             $('#tableCP').DataTable();
         })
 
-        function copyCertFileName(certFileName)
-        {
+        $(function () {
+            var Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000
+            });
+
+            $('.swalDefaultQuestion').click(function () {
+                showSwalToast('question', 'Hello', 'This is a question');
+            });
+
+            function showSwalToast(i, t, m) {
+                Toast.fire({
+                    icon: i,
+                    title: t,
+                    text: m
+                })
+            }
+        });
+
+        function copyCertFileName(certFileName) {
             /* Copy the text inside the text field */
             var tempInput = document.createElement("input");
             tempInput.value = certFileName;

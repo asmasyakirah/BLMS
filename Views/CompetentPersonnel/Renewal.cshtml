@@ -1,113 +1,179 @@
-﻿@model BLMS.v2.Models.CompetentPersonnel
+﻿@model BLMS.v2.Models.PageCompetentPersonnel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Renewal";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">COMPETENT PERSONNEL - RENEWAL</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="~/CompetentPersonnel/Index">Competent Personnel</a></li>
+                        <li class="breadcrumb-item active">Renewal</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h4>CompetentPersonnel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <form asp-action="Renewal">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PersonnelId" />
-            <div class="form-group">
-                <label asp-for="PersonnelName" class="control-label"></label>
-                <input asp-for="PersonnelName" class="form-control" />
-                <span asp-validation-for="PersonnelName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Icno" class="control-label"></label>
-                <input asp-for="Icno" class="form-control" />
-                <span asp-validation-for="Icno" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AppointedDt" class="control-label"></label>
-                <input asp-for="AppointedDt" class="form-control" />
-                <span asp-validation-for="AppointedDt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CertFrom" class="control-label"></label>
-                <input asp-for="CertFrom" class="form-control" />
-                <span asp-validation-for="CertFrom" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CertType" class="control-label"></label>
-                <input asp-for="CertType" class="form-control" />
-                <span asp-validation-for="CertType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CertNo" class="control-label"></label>
-                <input asp-for="CertNo" class="form-control" />
-                <span asp-validation-for="CertNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ExpiredDt" class="control-label"></label>
-                <input asp-for="ExpiredDt" class="form-control" />
-                <span asp-validation-for="ExpiredDt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="YearAwarded" class="control-label"></label>
-                <input asp-for="YearAwarded" class="form-control" />
-                <span asp-validation-for="YearAwarded" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CertFileName" class="control-label"></label>
-                <input asp-for="CertFileName" class="form-control" />
-                <span asp-validation-for="CertFileName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RegNo" class="control-label"></label>
-                <input asp-for="RegNo" class="form-control" />
-                <span asp-validation-for="RegNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Branch" class="control-label"></label>
-                <input asp-for="Branch" class="form-control" />
-                <span asp-validation-for="Branch" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedDt" class="control-label"></label>
-                <input asp-for="CreatedDt" class="form-control" />
-                <span asp-validation-for="CreatedDt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedDt" class="control-label"></label>
-                <input asp-for="UpdatedDt" class="form-control" />
-                <span asp-validation-for="UpdatedDt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UpdatedBy" class="control-label"></label>
-                <input asp-for="UpdatedBy" class="form-control" />
-                <span asp-validation-for="UpdatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BusinessDiv" class="control-label"></label>
-                <input asp-for="BusinessDiv" class="form-control" />
-                <span asp-validation-for="BusinessDiv" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BusinessUnit" class="control-label"></label>
-                <input asp-for="BusinessUnit" class="form-control" />
-                <span asp-validation-for="BusinessUnit" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <input type="hidden" asp-for="CompetentPersonnel.PersonnelId" />
+            <input type="hidden" asp-for="CompetentPersonnel.CreatedDt" />
+            <input type="hidden" asp-for="CompetentPersonnel.CreatedBy" />
+            <input type="hidden" asp-for="CompetentPersonnel.UpdatedDt" />
+            <input type="hidden" asp-for="CompetentPersonnel.UpdatedBy" />
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            @if (Model.ReturnMessage != null)
+                            {
+                                @Html.Raw(Model.ReturnMessage);
+                            }
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">Competent Personnel Details</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label"></label>
+                                                <input asp-for="CompetentPersonnel.BusinessDiv" class="form-control" />
+                                                <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label asp-for="CompetentPersonnel.BusinessUnit" class="control-label"></label>
+                                                <input asp-for="CompetentPersonnel.BusinessUnit" class="form-control" />
+                                                <span asp-validation-for="CompetentPersonnel.BusinessUnit" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.PersonnelName" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.PersonnelName" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.PersonnelName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.Icno" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.Icno" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.Icno" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.YearAwarded" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.YearAwarded" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.YearAwarded" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.AppointedDt" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.AppointedDt" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.AppointedDt" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.ExpiredDt" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.ExpiredDt" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.ExpiredDt" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.RegNo" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.RegNo" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.RegNo" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.Branch" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.Branch" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.Branch" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">Certificate Details</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.CertFrom" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.CertFrom" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.CertFrom" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.CertType" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.CertType" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.CertType" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.CertNo" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.CertNo" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.CertNo" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CompetentPersonnel.CertFileName" class="control-label"></label>
+                                        <input asp-for="CompetentPersonnel.CertFileName" class="form-control" />
+                                        <span asp-validation-for="CompetentPersonnel.CertFileName" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @{
+                                if (Model.CompetentPersonnel.CreatedBy != null)
+                                {
+                                    <span class="text-sm font-italic">Created by @Html.DisplayFor(model => model.CompetentPersonnel.CreatedBy) on @Html.DisplayFor(model => model.CompetentPersonnel.CreatedDt)<br /></span>
+                                }
+                                if (Model.CompetentPersonnel.UpdatedBy != null)
+                                {
+                                    <span class="text-sm font-italic">Updated by @Html.DisplayFor(model => model.CompetentPersonnel.UpdatedBy) on @Html.DisplayFor(model => model.CompetentPersonnel.UpdatedDt)</span>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Index" class="btn btn-success btn-sm text-white"> Back</a>
+                    <input type="submit" value="Save" class="btn btn-primary btn-sm" />
+                    @*<button type="button" class="btn btn-default btn-sm swalDefaultQuestion">
+                        Launch Success Toast
+                    </button>*@
+                </div>
             </div>
         </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    </section>
 </div>
 
 @section Scripts {
