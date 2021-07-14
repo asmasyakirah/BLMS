@@ -1,4 +1,4 @@
-﻿@model BLMS.v2.Models.CompetentPersonnel
+﻿@model BLMS.v2.Models.PageCompetentPersonnel
 
 @{
     ViewData["Title"] = "Details";
@@ -34,6 +34,11 @@
                     <div class="row">
                         <div class="col-md-12">
 
+                            @if (Model.ReturnMessage != null)
+                            {
+                                @Html.Raw(Model.ReturnMessage);
+                            }
+
                             <div class="card">
                                 <div class="card-header bg-success text-white">
                                     <label class="control-label text-sm">Competent Personnel Details</label>
@@ -48,58 +53,58 @@
 
                                     <dl class="row">
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.BusinessDiv)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.BusinessDiv)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.BusinessDiv)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.BusinessUnit)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessUnit)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.BusinessUnit)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.BusinessUnit)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.PersonnelName)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.PersonnelName)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.PersonnelName)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.PersonnelName)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.Icno)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.Icno)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.Icno)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.Icno)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.YearAwarded)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.YearAwarded)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.YearAwarded)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.YearAwarded)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.AppointedDt)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.AppointedDt)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.AppointedDt)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.AppointedDt)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.ExpiredDt)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.ExpiredDt)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.ExpiredDt)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.ExpiredDt)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.RegNo)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.RegNo)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.RegNo)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.RegNo)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.Branch)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.Branch)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.Branch)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.Branch)
                                         </dd>
                                     </dl>
 
@@ -120,37 +125,37 @@
 
                                     <dl class="row">
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.CertFrom)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFrom)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.CertFrom)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.CertFrom)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.CertType)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertType)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.CertType)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.CertType)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.CertNo)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertNo)
                                         </dt>
                                         <dd class="col-sm-10">
-                                            @Html.DisplayFor(model => model.CertNo)
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.CertNo)
                                         </dd>
                                         <dt class="col-sm-2">
-                                            @Html.DisplayNameFor(model => model.CertFileName)
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFileName)
                                         </dt>
                                         <dd class="col-sm-10">
                                             @{
-                                                if (Model.CertFileName == null)
+                                                if (Model.CompetentPersonnel.CertFileName == null)
                                                 {
                                                     <i class="font-italic">Not available</i>
                                                 }
                                                 else
                                                 {
-                                                    @Html.DisplayFor(modelItem => Model.CertFileName)
-                                                    <button type="button" onclick="copyCertFileName('@Html.DisplayFor(modelItem => Model.CertFileName)')" class="btn btn-link pl-2 pr-2"><i class="far fa-copy" title="Copy"></i></button>
-                                                    <a href="@Html.DisplayFor(modelItem => Model.CertFileName)" target="_blank" class="btn btn-link pl-0"><i class="fas fa-external-link-alt" title="Go to URL"></i></a>
+                                                    @Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)
+                                                    <button type="button" onclick="copyCertFileName('@Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)')" class="btn btn-link pl-2 pr-2"><i class="far fa-copy" title="Copy"></i></button>
+                                                    <a href="@Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)" target="_blank" class="btn btn-link pl-0"><i class="fas fa-external-link-alt" title="Go to URL"></i></a>
                                                 }
                                             }
                                         </dd>
@@ -160,13 +165,13 @@
                             </div>
 
                             @{
-                                if (Model.CreatedBy != null)
+                                if (Model.CompetentPersonnel.CreatedBy != null)
                                 {
-                                    <span class="text-sm font-italic">Created by @Html.DisplayFor(model => model.CreatedBy) on @Html.DisplayFor(model => model.CreatedDt)<br /></span>
+                                    <span class="text-sm font-italic">Created by @Html.DisplayFor(model => model.CompetentPersonnel.CreatedBy) on @Html.DisplayFor(model => model.CompetentPersonnel.CreatedDt)<br /></span>
                                 }
-                                if (Model.UpdatedBy != null)
+                                if (Model.CompetentPersonnel.UpdatedBy != null)
                                 {
-                                    <span class="text-sm font-italic">Updated by @Html.DisplayFor(model => model.UpdatedBy) on @Html.DisplayFor(model => model.UpdatedDt)</span>
+                                    <span class="text-sm font-italic">Updated by @Html.DisplayFor(model => model.CompetentPersonnel.UpdatedBy) on @Html.DisplayFor(model => model.CompetentPersonnel.UpdatedDt)</span>
                                 }
                             }
 
@@ -175,7 +180,7 @@
                 </div>
                 <div class="card-footer">
                     <a asp-action="Index" class="btn btn-success btn-sm text-white"> Back</a>
-                    <a asp-action="Renewal" class="btn btn-primary btn-sm" asp-route-id="@Model.PersonnelId">Renewal</a>
+                    <a asp-action="Renewal" class="btn btn-primary btn-sm" asp-route-id="@Model.CompetentPersonnel.PersonnelId">Renewal</a>
                 </div>
             </div>
         </form>

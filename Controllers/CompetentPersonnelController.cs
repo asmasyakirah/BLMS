@@ -25,7 +25,7 @@ namespace BLMS.v2.Controllers
         }
 
         // GET: CompetentPersonnel/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string m)
         {
             if (id == null)
             {
@@ -39,29 +39,61 @@ namespace BLMS.v2.Controllers
                 return NotFound();
             }
 
-            return View(competentPersonnel);
+            // Add successful message
+            string returnMessage = m switch
+            {
+                // Add successful message       
+                "registered" => GenerateAlertMessage("success", "", "Registration is successful."),//type, title, msg
+                // Add not successful message
+                "notregistered" => GenerateAlertMessage("danger", "", "Registration is not successful."),//type, title, msg
+                _ => "",
+            };
+
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel, ReturnMessage = returnMessage };
+
+            return View(pCompetentPersonnel);
         }
 
-        // GET: CompetentPersonnel/Create
-        public IActionResult Create()
+        // GET: CompetentPersonnel/Register
+        public IActionResult Register()
         {
-            return View();
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = new CompetentPersonnel() };
+
+            return View(pCompetentPersonnel);
         }
 
-        // POST: CompetentPersonnel/Create
+        // POST: CompetentPersonnel/Register
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
+        public async Task<IActionResult> Register([Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
         {
+            string returnMessageCode;
+
             if (ModelState.IsValid)
             {
+                // Update data
+                competentPersonnel.CreatedDt = DateTime.Now;
+                // TODO competentPersonnel.CreatedBy
+                competentPersonnel.UpdatedDt = DateTime.Now;
+                // TODO competentPersonnel.UpdatedBy
+
                 _context.Add(competentPersonnel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                // Add successful message
+                returnMessageCode = "registered";
             }
-            return View(competentPersonnel);
+            else
+            {
+                // Add not successful message
+                returnMessageCode = "notregistered";
+            }
+
+            return RedirectToAction("Details", new {  id = competentPersonnel.PersonnelId, m = returnMessageCode });
         }
 
         // GET: CompetentPersonnel/Renewal/5
@@ -91,8 +123,7 @@ namespace BLMS.v2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Renewal(int id, [Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
         {
-            // Update page Competent Personnel data
-            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel };
+            string returnMessage = "";
 
             if (id != competentPersonnel.PersonnelId)
             {
@@ -110,12 +141,12 @@ namespace BLMS.v2.Controllers
                     await _context.SaveChangesAsync();
 
                     // Add successful message
-                    pCompetentPersonnel.ReturnMessage = GenerateAlertMessage("success", "", "Renewal is successfully updated."); //type, title, msg
+                    returnMessage = GenerateAlertMessage("success", "", "Renewal is successfully updated."); //type, title, msg
                 }
                 catch (DbUpdateConcurrencyException)
                 {
                     // Add not successful message
-                    pCompetentPersonnel.ReturnMessage = GenerateAlertMessage("danger", "", "Renewal is not successful."); //type, title, msg
+                    returnMessage = GenerateAlertMessage("danger", "", "Renewal is not successful."); //type, title, msg
 
                     if (!CompetentPersonnelExists(competentPersonnel.PersonnelId))
                     {
@@ -128,6 +159,9 @@ namespace BLMS.v2.Controllers
                 }
                 //return RedirectToAction(nameof(Index));
             }
+
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel, ReturnMessage = returnMessage };
 
             return View(pCompetentPersonnel);
         }
