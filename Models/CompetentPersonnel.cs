@@ -11,12 +11,12 @@ namespace BLMS.v2.Models
     [Table("tblCompetentPersonnel")]
     public partial class CompetentPersonnel
     {
-        [Required]
+        [Required(ErrorMessage = "Please Select Business Division")]
         [StringLength(150)]
         [Display(Name = "Business Division")]
         public string BusinessDiv { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Select Business Unit")]
         [StringLength(150)]
         [Display(Name = "Business Unit")]
         public string BusinessUnit { get; set; }
@@ -26,7 +26,7 @@ namespace BLMS.v2.Models
         [Display(Name = "Personnel ID")]
         public int PersonnelId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Fill Personnel Name")]
         [StringLength(500)]
         [Display(Name = "Name")]
         public string PersonnelName { get; set; }
@@ -42,7 +42,7 @@ namespace BLMS.v2.Models
         [Display(Name = "IC No")]
         public string Icno { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Fill Certificate Body")]
         [StringLength(100)]
         [Display(Name = "Certificate Body")]
         public string CertFrom { get; set; }

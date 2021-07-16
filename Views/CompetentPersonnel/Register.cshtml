@@ -30,7 +30,7 @@
         <!-- Default box -->
         <form asp-action="Register">
 
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger text-sm"></div>
             <input type="hidden" asp-for="CompetentPersonnel.PersonnelId" />
             <input type="hidden" asp-for="CompetentPersonnel.CreatedDt" />
             <input type="hidden" asp-for="CompetentPersonnel.CreatedBy" />
@@ -62,53 +62,56 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label"></label>
-                                                <input asp-for="CompetentPersonnel.BusinessDiv" class="form-control" />
-                                                <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger"></span>
+                                                <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label text-sm" style="color:red">*</label>
+                                                <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label text-sm"></label>
+                                                <input asp-for="CompetentPersonnel.BusinessDiv" class="form-control text-sm" />
+                                                <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger text-sm"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label asp-for="CompetentPersonnel.BusinessUnit" class="control-label"></label>
-                                                <input asp-for="CompetentPersonnel.BusinessUnit" class="form-control" />
-                                                <span asp-validation-for="CompetentPersonnel.BusinessUnit" class="text-danger"></span>
+                                                <label asp-for="CompetentPersonnel.BusinessUnit" class="control-label text-sm" style="color:red">*</label>
+                                                <label asp-for="CompetentPersonnel.BusinessUnit" class="control-label text-sm"></label>
+                                                <input asp-for="CompetentPersonnel.BusinessUnit" class="form-control text-sm" />
+                                                <span asp-validation-for="CompetentPersonnel.BusinessUnit" class="text-danger text-sm"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.PersonnelName" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.PersonnelName" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.PersonnelName" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.PersonnelName" class="control-label text-sm" style="color:red">*</label>
+                                        <label asp-for="CompetentPersonnel.PersonnelName" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.PersonnelName" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.PersonnelName" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.Icno" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.Icno" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.Icno" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.Icno" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.Icno" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.Icno" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.YearAwarded" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.YearAwarded" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.YearAwarded" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.YearAwarded" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.YearAwarded" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.YearAwarded" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.AppointedDt" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.AppointedDt" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.AppointedDt" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.AppointedDt" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.AppointedDt" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.AppointedDt" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.ExpiredDt" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.ExpiredDt" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.ExpiredDt" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.ExpiredDt" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.ExpiredDt" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.ExpiredDt" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.RegNo" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.RegNo" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.RegNo" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.RegNo" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.RegNo" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.RegNo" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.Branch" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.Branch" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.Branch" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.Branch" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.Branch" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.Branch" class="text-danger text-sm"></span>
                                     </div>
 
                                 </div>
@@ -127,24 +130,25 @@
                                 <div class="card-body">
 
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.CertFrom" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.CertFrom" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.CertFrom" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.CertFrom" class="control-label text-sm" style="color:red">*</label>
+                                        <label asp-for="CompetentPersonnel.CertFrom" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.CertFrom" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.CertFrom" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.CertType" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.CertType" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.CertType" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.CertType" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.CertType" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.CertType" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.CertNo" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.CertNo" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.CertNo" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.CertNo" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.CertNo" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.CertNo" class="text-danger text-sm"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CompetentPersonnel.CertFileName" class="control-label"></label>
-                                        <input asp-for="CompetentPersonnel.CertFileName" class="form-control" />
-                                        <span asp-validation-for="CompetentPersonnel.CertFileName" class="text-danger"></span>
+                                        <label asp-for="CompetentPersonnel.CertFileName" class="control-label text-sm"></label>
+                                        <input asp-for="CompetentPersonnel.CertFileName" class="form-control text-sm" />
+                                        <span asp-validation-for="CompetentPersonnel.CertFileName" class="text-danger text-sm"></span>
                                     </div>
 
                                 </div>
