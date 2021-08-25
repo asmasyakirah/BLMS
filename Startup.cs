@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLMS.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace BLMS
 {
@@ -64,6 +66,9 @@ namespace BLMS
             services.AddMvc()
         .AddSessionStateTempDataProvider();
             services.AddSession();
+
+            services.AddDbContext<CompetentPersonnelDBContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DevServerConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

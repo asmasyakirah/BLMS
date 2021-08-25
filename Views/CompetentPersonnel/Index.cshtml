@@ -1,0 +1,131 @@
+﻿@model IEnumerable<BLMS.Models.CompetentPersonnel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonnelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Icno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointedDt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpiredDt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearAwarded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CertFileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedDt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessDiv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BusinessUnit)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonnelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Icno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointedDt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiredDt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearAwarded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertFileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessDiv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessUnit)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PersonnelId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PersonnelId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PersonnelId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
