@@ -1,131 +1,130 @@
-﻿@model IEnumerable<BLMS.Models.CompetentPersonnel>
+﻿@model IEnumerable<BLMS.v2.Models.CompetentPersonnel>
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">COMPETENT PERSONNEL</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active">Competent Personnel</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.PersonnelName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Icno)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AppointedDt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CertFrom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CertType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CertNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpiredDt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearAwarded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CertFileName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RegNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Branch)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedDt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UpdatedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessDiv)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BusinessUnit)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PersonnelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Icno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppointedDt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CertFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CertType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CertNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpiredDt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.YearAwarded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CertFileName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Branch)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedDt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BusinessDiv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BusinessUnit)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PersonnelId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PersonnelId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PersonnelId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-body">
+
+                <table id="tableCP" class="table table-bordered table-responsive-sm" style="display: block; overflow-x: auto; white-space: nowrap;">
+                    <thead class="text-center table-active">
+                        <tr>
+                            <th class="text-sm align-text-top">
+                                No
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.BusinessUnit)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.PersonnelName)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.AppointedDt)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.CertFrom)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.CertType)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.CertNo)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.ExpiredDt)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.YearAwarded)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                @Html.DisplayNameFor(model => model.CertFileName)
+                            </th>
+                            <th class="text-sm align-text-top">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @{ int i = 1; }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-sm">
+                                    @i
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.BusinessUnit)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.PersonnelName)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.AppointedDt)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.CertFrom)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.CertType)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.CertNo)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.ExpiredDt)
+                                </td>
+                                <td class="text-sm">
+                                    @Html.DisplayFor(modelItem => item.YearAwarded)
+                                </td>
+                                <td>
+                                    @{
+                                        if (item.CertFileName == null)
+                                        {
+                                            <i class="text-sm font-italic">Not available</i>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Html.DisplayFor(modelItem => item.CertFileName)" target="_blank"><i class="fa fa-file fa-sm"></i></a>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.PersonnelId }, new { @class = "btn btn-secondary btn-sm btn-block mb-1" })
+                                    @Html.ActionLink("Renewal", "Renewal", new { id = item.PersonnelId }, new { @class = "btn btn-primary btn-sm btn-block" })
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+                <a asp-action="Register" class="btn btn-success btn-block btn-sm text-white">Register New Competent Personnel</a>
+            </div>
+        </div>
+    </section>
+</div>

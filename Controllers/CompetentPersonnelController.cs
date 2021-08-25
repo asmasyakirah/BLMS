@@ -26,7 +26,7 @@ namespace BLMS.Controllers
         }
 
         // GET: CompetentPersonnel/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string m)
         {
             if (id == null)
             {
@@ -40,33 +40,65 @@ namespace BLMS.Controllers
                 return NotFound();
             }
 
-            return View(competentPersonnel);
+            // Add successful message
+            string returnMessage = m switch
+            {
+                // Add successful message       
+                "registered" => GenerateAlertMessage("success", "", "Registration is successful."),//type, title, msg
+                // Add not successful message
+                "notregistered" => GenerateAlertMessage("danger", "", "Registration is not successful."),//type, title, msg
+                _ => "",
+            };
+
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel, ReturnMessage = returnMessage };
+
+            return View(pCompetentPersonnel);
         }
 
-        // GET: CompetentPersonnel/Create
-        public IActionResult Create()
+        // GET: CompetentPersonnel/Register
+        public IActionResult Register()
         {
-            return View();
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = new CompetentPersonnel() };
+
+            return View(pCompetentPersonnel);
         }
 
-        // POST: CompetentPersonnel/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CompetentPersonnel/Register
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
+        public async Task<IActionResult> Register([Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
         {
+            string returnMessageCode;
+
             if (ModelState.IsValid)
             {
+                // Update data
+                competentPersonnel.CreatedDt = DateTime.Now;
+                // TODO competentPersonnel.CreatedBy
+                competentPersonnel.UpdatedDt = DateTime.Now;
+                // TODO competentPersonnel.UpdatedBy
+
                 _context.Add(competentPersonnel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                // Add successful message
+                returnMessageCode = "registered";
             }
-            return View(competentPersonnel);
+            else
+            {
+                // Add not successful message
+                returnMessageCode = "notregistered";
+            }
+
+            return RedirectToAction("Details", new { id = competentPersonnel.PersonnelId, m = returnMessageCode });
         }
 
-        // GET: CompetentPersonnel/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: CompetentPersonnel/Renewal/5
+        public async Task<IActionResult> Renewal(int? id)
         {
             if (id == null)
             {
@@ -78,30 +110,45 @@ namespace BLMS.Controllers
             {
                 return NotFound();
             }
-            return View(competentPersonnel);
+
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel };
+
+            return View(pCompetentPersonnel);
         }
 
-        // POST: CompetentPersonnel/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CompetentPersonnel/Renewal/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
+        public async Task<IActionResult> Renewal(int id, [Bind("PersonnelId,PersonnelName,Icno,AppointedDt,CertFrom,CertType,CertNo,ExpiredDt,YearAwarded,CertFileName,RegNo,Branch,CreatedDt,CreatedBy,UpdatedDt,UpdatedBy,BusinessDiv,BusinessUnit")] CompetentPersonnel competentPersonnel)
         {
+            string returnMessage = "";
+
             if (id != competentPersonnel.PersonnelId)
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try
                 {
+                    // Update data
+                    competentPersonnel.UpdatedDt = DateTime.Now;
+                    // TODO competentPersonnel.UpdatedBy
+
                     _context.Update(competentPersonnel);
                     await _context.SaveChangesAsync();
+
+                    // Add successful message
+                    returnMessage = GenerateAlertMessage("success", "", "Renewal is successfully updated."); //type, title, msg
                 }
                 catch (DbUpdateConcurrencyException)
                 {
+                    // Add not successful message
+                    returnMessage = GenerateAlertMessage("danger", "", "Renewal is not successful."); //type, title, msg
+
                     if (!CompetentPersonnelExists(competentPersonnel.PersonnelId))
                     {
                         return NotFound();
@@ -111,9 +158,13 @@ namespace BLMS.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
             }
-            return View(competentPersonnel);
+
+            // Update page Competent Personnel data
+            PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel, ReturnMessage = returnMessage };
+
+            return View(pCompetentPersonnel);
         }
 
         // GET: CompetentPersonnel/Delete/5
@@ -148,6 +199,38 @@ namespace BLMS.Controllers
         private bool CompetentPersonnelExists(int id)
         {
             return _context.CompetentPersonnel.Any(e => e.PersonnelId == id);
+        }
+
+        private string GenerateAlertMessage(string type, string title, string msg) // type:success/info/danger/warning
+        {
+            string icon = "info";
+
+            switch (type)
+            {
+                case "success":
+                    icon = "check";
+                    break;
+
+                case "danger":
+                case "warning":
+                    icon = "exclamation-triangle";
+                    break;
+
+            }
+            string alertMsg = "<div class=\"callout callout-" + type + " callout-dismissible\">" +
+                "<button type = \"button\" class=\"close\" data-dismiss=\"callout\" aria-hidden=\"true\">&times;</button>" +
+                "<i class=\"icon fas fa-" + icon + " text-" + type + "\"></i>&nbsp;" + msg + "</div>";
+
+            //string alertMsg = "<div class=\"alert alert-" + icon + " alert-dismissible\">" +
+            //    "<button type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>" +
+            //    "<h5><i class=\"icon fas fa-check\"></i>" + title + "</h5>" + msg +
+            //    "</button></div>";
+
+            //string alertMsg = "<script type=\"text/javascript\">" +
+            //    "$(document).ready(function () {showSwalToast('" + icon + "','" + title + "','" + msg + "')})" +
+            //    "</script>";            
+
+            return alertMsg;
         }
     }
 }
