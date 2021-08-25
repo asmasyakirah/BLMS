@@ -42,7 +42,7 @@ namespace BLMS.Models
         [Display(Name = "IC No")]
         public string Icno { get; set; }
 
-        [Required(ErrorMessage = "Please Fill Certificate Body")]
+        [Required(ErrorMessage = "Please Select Certificate Body")]
         [StringLength(100)]
         [Display(Name = "Certificate Body")]
         public string CertFrom { get; set; }

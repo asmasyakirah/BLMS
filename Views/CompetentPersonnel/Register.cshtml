@@ -53,17 +53,27 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="md-form form-sm mb-0">
-                                            <input asp-for="CompetentPersonnel.BusinessDiv" class="form-control" placeholder="Please Select @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)">
-                                            <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)</label>
+                                            <select asp-for="CompetentPersonnel.BusinessDiv"
+                                                    class="mdb-select md-form colorful-select dropdown-primary"
+                                                    asp-items="@(new SelectList(@ViewBag.ListofBusinessDiv ,"DivName", "DivName"))">
+                                            </select>
+                                            <label asp-for="CompetentPersonnel.BusinessDiv" class="mdb-main-label" for="DivName"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)</label>
                                             <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger text-sm"></span>
+                                            @*<input asp-for="" class="form-control" placeholder="Please Select @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)">
+                                                <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)</label>
+                                                <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger text-sm"></span>*@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="md-form form-sm mb-0">
-                                            <input asp-for="CompetentPersonnel.BusinessUnit" class="form-control" placeholder="Please Select @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessUnit)">
-                                            <label asp-for="CompetentPersonnel.BusinessUnit" class="control-label"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessUnit)</label>
+                                            <select asp-for="CompetentPersonnel.BusinessUnit"
+                                                    class="mdb-select md-form colorful-select dropdown-primary"
+                                                    asp-items="@(new SelectList(@ViewBag.ListofBusinessUnit ,"UnitName", "UnitName"))">
+                                            </select>
+                                            <label asp-for="CompetentPersonnel.BusinessUnit" class="mdb-main-label" for="UnitName"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessUnit)</label>
                                             <span asp-validation-for="CompetentPersonnel.BusinessUnit" class="text-danger text-sm"></span>
                                         </div>
                                     </div>
@@ -117,7 +127,7 @@
                                     <div class="col-md-12">
                                         <div class="md-form form-sm mb-0">
                                             <input asp-for="CompetentPersonnel.RegNo" class="form-control" placeholder="Type New @Html.DisplayNameFor(model => model.CompetentPersonnel.RegNo)">
-                                            <label asp-for="CompetentPersonnel.RegNo" class="control-label"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.RegNo)</label>
+                                            <label asp-for="CompetentPersonnel.RegNo" class="control-label">@Html.DisplayNameFor(model => model.CompetentPersonnel.RegNo)</label>
                                             <span asp-validation-for="CompetentPersonnel.RegNo" class="text-danger text-sm"></span>
                                         </div>
                                     </div>
@@ -134,8 +144,11 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="md-form form-sm mb-0">
-                                            <input asp-for="CompetentPersonnel.CertFrom" class="form-control" placeholder="Type New @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFrom)">
-                                            <label asp-for="CompetentPersonnel.CertFrom" class="control-label"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFrom)</label>
+                                            <select asp-for="CompetentPersonnel.CertFrom"
+                                                    class="mdb-select md-form colorful-select dropdown-primary"
+                                                    asp-items="@(new SelectList(@ViewBag.ListofCertBody ,"CertBodyName", "CertBodyName"))">
+                                            </select>
+                                            <label asp-for="CompetentPersonnel.CertFrom" class="mdb-main-label" for="CertBodyName"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFrom)</label>
                                             <span asp-validation-for="CompetentPersonnel.CertFrom" class="text-danger text-sm"></span>
                                         </div>
                                     </div>
@@ -198,5 +211,11 @@
 </section>
 
 @section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.mdb-select').materialSelect();
+        });
+    </script>
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

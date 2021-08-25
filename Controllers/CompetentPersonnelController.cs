@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BLMS.Context;
 using BLMS.Models;
+using BLMS.Models.Admin;
 
 namespace BLMS.Controllers
 {
     public class CompetentPersonnelController : Controller
     {
         private readonly CompetentPersonnelDBContext _context;
+        readonly AdminDBContext ddlOthers = new AdminDBContext();
 
         public CompetentPersonnelController(CompetentPersonnelDBContext context)
         {
@@ -61,6 +63,23 @@ namespace BLMS.Controllers
         {
             // Update page Competent Personnel data
             PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = new CompetentPersonnel() };
+
+            // DDL
+
+            //ddlBusinessDiv
+            List<BusinessDiv> businessDivList = ddlOthers.BusinessDivGetAll().ToList();
+            businessDivList.Insert(0, new BusinessDiv { DivName = "Please Select Business Division" });
+            ViewBag.ListofBusinessDiv = businessDivList;
+
+            //ddlCertBody
+            List<BusinessUnit> businessUnitList = ddlOthers.BusinessUnitGetAll().ToList();
+            businessUnitList.Insert(0, new BusinessUnit { UnitName = "Please Select Business Unit" });
+            ViewBag.ListofBusinessUnit = businessUnitList;
+
+            //ddlCertBody
+            List<CertBody> certBodyList = ddlOthers.CertBodyGetAll().ToList();
+            certBodyList.Insert(0, new CertBody { CertBodyName = "Please Select Certificate Body" });
+            ViewBag.ListofCertBody = certBodyList;
 
             return View(pCompetentPersonnel);
         }
