@@ -12,6 +12,7 @@ namespace BLMS.Controllers
     public class CompetentPersonnelController : Controller
     {
         private readonly CompetentDBContext _context;
+        readonly AdminDBContext ddlOthers = new AdminDBContext();
 
         public CompetentPersonnelController(CompetentDBContext context)
         {
@@ -21,7 +22,7 @@ namespace BLMS.Controllers
         // GET: CompetentPersonnel
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TblCompetentPersonnel.ToListAsync());
+            return View(await _context.CompetentPersonnel.ToListAsync());
         }
 
         // GET: CompetentPersonnel/Details/5
@@ -32,7 +33,7 @@ namespace BLMS.Controllers
                 return NotFound();
             }
 
-            var competentPersonnel = await _context.TblCompetentPersonnel
+            var competentPersonnel = await _context.CompetentPersonnel
                 .FirstOrDefaultAsync(m => m.PersonnelId == id);
             if (competentPersonnel == null)
             {
@@ -60,6 +61,23 @@ namespace BLMS.Controllers
         {
             // Update page Competent Personnel data
             PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = new CompetentPersonnel() };
+
+            // DDL
+
+            //ddlBusinessDiv
+            List<BusinessDiv> businessDivList = ddlOthers.BusinessDivGetAll().ToList();
+            businessDivList.Insert(0, new BusinessDiv { DivName = "Please Select Business Division" });
+            ViewBag.ListofBusinessDiv = businessDivList;
+
+            //ddlCertBody
+            List<BusinessUnit> businessUnitList = ddlOthers.BusinessUnitGetAll().ToList();
+            businessUnitList.Insert(0, new BusinessUnit { UnitName = "Please Select Business Unit" });
+            ViewBag.ListofBusinessUnit = businessUnitList;
+
+            //ddlCertBody
+            List<CertBody> certBodyList = ddlOthers.CertBodyGetAll().ToList();
+            certBodyList.Insert(0, new CertBody { CertBodyName = "Please Select Certificate Body" });
+            ViewBag.ListofCertBody = certBodyList;
 
             return View(pCompetentPersonnel);
         }
@@ -104,7 +122,7 @@ namespace BLMS.Controllers
                 return NotFound();
             }
 
-            var competentPersonnel = await _context.TblCompetentPersonnel.FindAsync(id);
+            var competentPersonnel = await _context.CompetentPersonnel.FindAsync(id);
             if (competentPersonnel == null)
             {
                 return NotFound();
@@ -113,6 +131,22 @@ namespace BLMS.Controllers
             // Update page Competent Personnel data
             PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel };
 
+            // DDL
+
+            //ddlBusinessDiv
+            List<BusinessDiv> businessDivList = ddlOthers.BusinessDivGetAll().ToList();
+            businessDivList.Insert(0, new BusinessDiv { DivName = "Please Select Business Division" });
+            ViewBag.ListofBusinessDiv = businessDivList;
+
+            //ddlCertBody
+            List<BusinessUnit> businessUnitList = ddlOthers.BusinessUnitGetAll().ToList();
+            businessUnitList.Insert(0, new BusinessUnit { UnitName = "Please Select Business Unit" });
+            ViewBag.ListofBusinessUnit = businessUnitList;
+
+            //ddlCertBody
+            List<CertBody> certBodyList = ddlOthers.CertBodyGetAll().ToList();
+            certBodyList.Insert(0, new CertBody { CertBodyName = "Please Select Certificate Body" });
+            ViewBag.ListofCertBody = certBodyList;
             return View(pCompetentPersonnel);
         }
 
@@ -163,6 +197,23 @@ namespace BLMS.Controllers
             // Update page Competent Personnel data
             PageCompetentPersonnel pCompetentPersonnel = new PageCompetentPersonnel { CompetentPersonnel = competentPersonnel, ReturnMessage = returnMessage };
 
+            // DDL
+
+            //ddlBusinessDiv
+            List<BusinessDiv> businessDivList = ddlOthers.BusinessDivGetAll().ToList();
+            businessDivList.Insert(0, new BusinessDiv { DivName = "Please Select Business Division" });
+            ViewBag.ListofBusinessDiv = businessDivList;
+
+            //ddlCertBody
+            List<BusinessUnit> businessUnitList = ddlOthers.BusinessUnitGetAll().ToList();
+            businessUnitList.Insert(0, new BusinessUnit { UnitName = "Please Select Business Unit" });
+            ViewBag.ListofBusinessUnit = businessUnitList;
+
+            //ddlCertBody
+            List<CertBody> certBodyList = ddlOthers.CertBodyGetAll().ToList();
+            certBodyList.Insert(0, new CertBody { CertBodyName = "Please Select Certificate Body" });
+            ViewBag.ListofCertBody = certBodyList;
+
             return View(pCompetentPersonnel);
         }
 
@@ -174,7 +225,7 @@ namespace BLMS.Controllers
                 return NotFound();
             }
 
-            var competentPersonnel = await _context.TblCompetentPersonnel
+            var competentPersonnel = await _context.CompetentPersonnel
                 .FirstOrDefaultAsync(m => m.PersonnelId == id);
             if (competentPersonnel == null)
             {
@@ -189,15 +240,15 @@ namespace BLMS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var competentPersonnel = await _context.TblCompetentPersonnel.FindAsync(id);
-            _context.TblCompetentPersonnel.Remove(competentPersonnel);
+            var competentPersonnel = await _context.CompetentPersonnel.FindAsync(id);
+            _context.CompetentPersonnel.Remove(competentPersonnel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CompetentPersonnelExists(int id)
         {
-            return _context.TblCompetentPersonnel.Any(e => e.PersonnelId == id);
+            return _context.CompetentPersonnel.Any(e => e.PersonnelId == id);
         }
 
         private string GenerateAlertMessage(string type, string title, string msg) // type:success/info/danger/warning

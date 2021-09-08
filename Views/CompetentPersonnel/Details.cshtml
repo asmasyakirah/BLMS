@@ -5,196 +5,184 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="mt-md-4 pt-md-2 mb-5 pb-5" style="font-size:12px;">
-    <!-- Grid row -->
-    <div class="row">
-
-        <!-- Grid column -->
-        <div class="col-md-12">
-            <div class="card card-cascade cascading-admin-card user-card">
-                <!-- Card Data -->
-                <div class="admin-up d-flex justify-content-start">
-                    <i class="fas fa fa-medal info-color py-4 mr-3 z-depth-2"></i>
-                    <div class="data">
-                        <h5 class="font-weight-bold dark-grey-text">
-                            View Competent Personnel
-                        </h5>
-                    </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Page header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="text-bold">COMPETENT PERSONNEL - DETAILS</h4>
                 </div>
-
-                <div class="card-body card-body-cascade">
-                    <!-- Grid row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form asp-action="Create" autocomplete="off" method="post" enctype="multipart/form-data">
-                                <div class="list-group list-group-flush">
-                                    <div class="container">
-                                        <span class="font-weight-bold dark-grey-text">
-                                            <i class="fas fa fa-clipboard-list"> License Details</i>
-                                        </span>
-
-                                        <div class="list-group-item col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.PersonnelName" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.PersonnelName" class="control-label"><span style="color:red;">*</span> Name</label>
-                                                        <span asp-validation-for="CompetentPersonnel.PersonnelName" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.Icno" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.Icno" class="control-label"><span style="color:red;">*</span> IC No</label>
-                                                        <span asp-validation-for="CompetentPersonnel.Icno" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.BusinessDiv" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.BusinessDiv" class="control-label"><span style="color:red;">*</span> Business Division</label>
-                                                        <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.BusinessUnit" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.BusinessUnit" class="control-label"><span style="color:red;">*</span> Business Unit</label>
-                                                        <span asp-validation-for="CompetentPersonnel.BusinessUnit" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.YearAwarded" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.YearAwarded" class="control-label"><span style="color:red;">*</span> Year Awarded</label>
-                                                        <span asp-validation-for="CompetentPersonnel.YearAwarded" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.RegNo" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.RegNo" class="control-label"><span style="color:red;">*</span> Registration No</label>
-                                                        <span asp-validation-for="CompetentPersonnel.RegNo" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.Branch" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.Branch" class="control-label"><span style="color:red;">*</span> Branch</label>
-                                                        <span asp-validation-for="CompetentPersonnel.Branch" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="md-form input-group form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.AppointedDt" type="text" class="form-control IssuedDT" onkeydown="return false" style="font-size:12px;">
-                                                        <div class="input-group-append md-addon">
-                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                        </div>
-                                                        <label asp-for="CompetentPersonnel.AppointedDt" class="mdb-main-label">Appointment Date</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="md-form input-group form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.ExpiredDt" type="text" class="form-control IssuedDT" onkeydown="return false" style="font-size:12px;">
-                                                        <div class="input-group-append md-addon">
-                                                            <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                                        </div>
-                                                        <label asp-for="CompetentPersonnel.ExpiredDt" class="mdb-main-label">Expired Date</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br />
-
-                                <div class="list-group list-group-flush">
-                                    <div class="container">
-                                        <span class="font-weight-bold dark-grey-text">
-                                            <i class="fas fa fa-clipboard-list"> Certificate Details</i>
-                                        </span>
-
-                                        <div class="list-group-item col-md-12">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.CertFrom" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.CertFrom" class="control-label"><span style="color:red;">*</span> Certificate Body</label>
-                                                        <span asp-validation-for="CompetentPersonnel.CertFrom" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.CertType" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.CertType" class="control-label"><span style="color:red;">*</span> Certificate Type</label>
-                                                        <span asp-validation-for="CompetentPersonnel.CertType" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <div class="md-form form-sm mb-0">
-                                                        <input asp-for="CompetentPersonnel.CertNo" onkeyup="this.value=this.value.toUpperCase()" class="form-control" onkeydown="return false" style="font-size:12px;">
-                                                        <label asp-for="CompetentPersonnel.CertNo" class="control-label"><span style="color:red;">*</span> Certificate No</label>
-                                                        <span asp-validation-for="CompetentPersonnel.CertNo" class="text-danger text-sm"></span>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-12">
-                                                    <label asp-for="CompetentPersonnel.CertNo" class="control-label"><span style="color:red;">*</span> Certificate File</label>
-
-                                                    <div class="input-group input-group-sm mb-3">
-                                                        @if (Model.CompetentPersonnel.CertFileName == null)
-                                                        {
-                                                            <label asp-for="CompetentPersonnel.CertNo" class="control-label font-italic">Not Available</label>
-                                                        }
-                                                        else
-                                                        {
-                                                            <input type="text" class="form-control" asp-for="CompetentPersonnel.CertFileName" style="font-size: 12px;">
-                                                            <div class="input-group-prepend">
-                                                                <a class="input-group-text" href="@Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)" target="_blank" style="font-size: 12px;">Open Link</a>
-                                                            </div>
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <br />
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <a asp-action="Index" class="btn btn-outline-success waves-effect">Back</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Home/Index">Home</a></li>
+                        <li class="breadcrumb-item active"><a href="~/CompetentPersonnel/Index">Competent Personnel</a></li>
+                        <li class="breadcrumb-item active">Details</li>
+                    </ol>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <form asp-action="Edit" autocomplete="off">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            @if (Model.ReturnMessage != null)
+                            {
+                                @Html.Raw(Model.ReturnMessage);
+                            }
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">Competent Personnel Details</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <dl class="row">
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.BusinessDiv)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessUnit)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.BusinessUnit)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.PersonnelName)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.PersonnelName)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.Icno)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.Icno)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.YearAwarded)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.YearAwarded)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.AppointedDt)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.AppointedDt)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.ExpiredDt)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.ExpiredDt)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.RegNo)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.RegNo)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.Branch)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.Branch)
+                                        </dd>
+                                    </dl>
+
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <label class="control-label text-sm">Certificate Details</label>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <dl class="row">
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFrom)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.CertFrom)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertType)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.CertType)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertNo)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @Html.DisplayFor(model => model.CompetentPersonnel.CertNo)
+                                        </dd>
+                                        <dt class="col-sm-2">
+                                            @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFileName)
+                                        </dt>
+                                        <dd class="col-sm-10">
+                                            @{
+                                                if (Model.CompetentPersonnel.CertFileName == null)
+                                                {
+                                                    <i class="font-italic">Not available</i>
+                                                }
+                                                else
+                                                {
+                                                    @Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)
+                                                    <button type="button" onclick="copyCertFileName('@Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)')" class="btn btn-link pl-2 pr-2"><i class="far fa-copy" title="Copy"></i></button>
+                                                    <a href="@Html.DisplayFor(modelItem => Model.CompetentPersonnel.CertFileName)" target="_blank" class="btn btn-link pl-0"><i class="fas fa-external-link-alt" title="Go to URL"></i></a>
+                                                }
+                                            }
+                                        </dd>
+                                    </dl>
+
+                                </div>
+                            </div>
+
+                            @{
+                                if (Model.CompetentPersonnel.CreatedBy != null)
+                                {
+                                    <span class="text-sm font-italic">Created by @Html.DisplayFor(model => model.CompetentPersonnel.CreatedBy) on @Html.DisplayFor(model => model.CompetentPersonnel.CreatedDt)<br /></span>
+                                }
+                                if (Model.CompetentPersonnel.UpdatedBy != null)
+                                {
+                                    <span class="text-sm font-italic">Updated by @Html.DisplayFor(model => model.CompetentPersonnel.UpdatedBy) on @Html.DisplayFor(model => model.CompetentPersonnel.UpdatedDt)</span>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Index" class="btn btn-success btn-sm text-white"> Back</a>
+                    <a asp-action="Renewal" class="btn btn-primary btn-sm" asp-route-id="@Model.CompetentPersonnel.PersonnelId">Renewal</a>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>

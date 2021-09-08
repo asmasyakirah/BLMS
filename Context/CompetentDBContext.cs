@@ -15,7 +15,7 @@ namespace BLMS.Context
         {
         }
 
-        public virtual DbSet<CompetentPersonnel> TblCompetentPersonnel { get; set; }
+        public virtual DbSet<CompetentPersonnel> CompetentPersonnel { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +32,7 @@ namespace BLMS.Context
 
             modelBuilder.Entity<CompetentPersonnel>(entity =>
             {
+                entity.HasKey(x => x.PersonnelId);
                 entity.Property(e => e.PersonnelId).ValueGeneratedOnAdd();
             });
 
