@@ -53,6 +53,7 @@
                                             <select asp-for="CompetentPersonnel.BusinessDiv"
                                                     class="mdb-select md-form colorful-select dropdown-primary"
                                                     asp-items="@(new SelectList(@ViewBag.ListofBusinessDiv ,"DivName", "DivName"))">
+                                                <option selected disabled>Please Select @Html.DisplayNameFor(model => Model.CompetentPersonnel.BusinessDiv)</option>
                                             </select>
                                             <label asp-for="CompetentPersonnel.BusinessDiv" class="mdb-main-label" for="DivName"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessDiv)</label>
                                             <span asp-validation-for="CompetentPersonnel.BusinessDiv" class="text-danger text-sm"></span>
@@ -67,6 +68,7 @@
                                             <select asp-for="CompetentPersonnel.BusinessUnit"
                                                     class="mdb-select md-form colorful-select dropdown-primary"
                                                     asp-items="@(new SelectList(@ViewBag.ListofBusinessUnit ,"UnitName", "UnitName"))">
+                                                <option selected disabled>Please Select @Html.DisplayNameFor(model => Model.CompetentPersonnel.BusinessUnit)</option>
                                             </select>
                                             <label asp-for="CompetentPersonnel.BusinessUnit" class="mdb-main-label" for="UnitName"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.BusinessUnit)</label>
                                             <span asp-validation-for="CompetentPersonnel.BusinessUnit" class="text-danger text-sm"></span>
@@ -142,6 +144,7 @@
                                             <select asp-for="CompetentPersonnel.CertFrom"
                                                     class="mdb-select md-form colorful-select dropdown-primary"
                                                     asp-items="@(new SelectList(@ViewBag.ListofCertBody ,"CertBodyName", "CertBodyName"))">
+                                                <option selected disabled>Please Select @Html.DisplayNameFor(model => Model.CompetentPersonnel.CertFrom)</option>
                                             </select>
                                             <label asp-for="CompetentPersonnel.CertFrom" class="mdb-main-label" for="CertBodyName"><span style="color:red;">*</span> @Html.DisplayNameFor(model => model.CompetentPersonnel.CertFrom)</label>
                                             <span asp-validation-for="CompetentPersonnel.CertFrom" class="text-danger text-sm"></span>
